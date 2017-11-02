@@ -1,6 +1,10 @@
 FROM nginx:alpine
 
-ADD run.sh /run.sh
+EXPOSE 80
+
+ADD run.sh /usr/bin/redirectd
 ADD default.conf /etc/nginx/conf.d/default.conf
 
-CMD sh run.sh
+RUN chmod +x /usr/bin/redirectd
+
+CMD redirectd
